@@ -1,9 +1,16 @@
 from flask import Flask, jsonify
 import redis
+import os
+from flask_cors import CORS
+
+FRONTEND_URL = os.getenv('FRONTEND_URL')
+REDIS_HOST = os.getenv('REDIS_HOST')
+REDIS_PORT = os.getenv('REDIS_PORT')
 
 app = Flask(__name__)
+CORS(app, origins=[FRONTEND_URL])
 
-pool = redis.ConnectionPool(host='localhost', port=6379, db=0)
+pool = redis.ConnectionPool(host=REDIS_HOST, port=REDIS_PORT, db=0)
 r = redis.Redis(connection_pool=pool)
 
 
@@ -15,5 +22,4 @@ def hello_world():
         value = r.set('key', 0)
     r.incr('key')
     response = jsonify({'value': int(value)})
-    response.headers.add('Access-Control-Allow-Origin', '*')
     return response
