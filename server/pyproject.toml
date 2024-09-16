@@ -1,0 +1,16 @@
+[tool.poetry]
+package-mode = false
+name = "app"
+description = "Server for the RentSplitter app"
+authors = ["Sam Gilman <samsgilman@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+flask = "^3.0.3"
+redis = "^5.0.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
