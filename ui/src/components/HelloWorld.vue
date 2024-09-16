@@ -7,7 +7,8 @@ defineProps<{ msg: string }>()
 const count = ref('unknown')
 
 async function getData() {
-  const url = "http://localhost:5000";
+  const url = import.meta.env.VITE_API_URL;
+  console.log(url);
   try {
     const response = await axios.get(url)
     count.value = response.data.value
