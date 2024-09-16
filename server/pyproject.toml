@@ -10,6 +10,7 @@ python = "^3.12"
 flask = "^3.0.3"
 redis = "^5.0.9"
 flask-cors = "^5.0.0"
+gunicorn = "^23.0.0"
 
 [build-system]
 requires = ["poetry-core"]
