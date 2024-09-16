@@ -8,13 +8,8 @@ const count = ref('unknown')
 
 async function getData() {
   const url = import.meta.env.VITE_API_URL;
-  console.log(url);
-  try {
-    const response = await axios.get(url)
-    count.value = response.data.value
-  } catch (error) {
-    console.error(error.message);
-  }
+  const response = await axios.get(url)
+  count.value = response.data.value
 }
 </script>
 
