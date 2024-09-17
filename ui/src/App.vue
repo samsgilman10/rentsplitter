@@ -1,30 +1,56 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <div class="menu-bar">
+      <div class="left-menu">
+        <img src="/vite.svg" class="logo" alt="Vite logo" />
+        <span> RentSplitter </span>
+      </div>
+      <Button @click="showAbout = true" label="About" severity="contrast" class='about-button' />
+    </div>
+    <div>
+      Hello World!
+    </div>
+    <Dialog v-model:visible="showAbout" modal header="About" class="dialog-box">
+      Something in the dialog how wide will this dialog get if I just keep typing
+      will it continue to expand indefinitely or will it wrapp at some point idk
+    </Dialog>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
+<script setup lang="ts">
+import { ref } from 'vue';
+import Button from 'primevue/button';
+
+const showAbout = ref(false);
+</script>
+
+<style lang="css">
+.menu-bar {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  border-bottom: 1px solid black;
+}
+
+.left-menu {
+  display: flex;
+  margin: 8px;
+  gap: 8px;
+  align-items: center;
+}
+
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  max-height: 90%;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.about-button {
+  margin-right: 8px;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.dialog-box {
+  max-width: 668px;
+  margin: 0 16px;
 }
 </style>
