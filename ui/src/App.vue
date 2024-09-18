@@ -8,11 +8,10 @@
       <Button @click="showAbout = true" label="About" severity="contrast" class='about-button' />
     </div>
     <div>
-      Hello World!
+      <MainController />
     </div>
     <Dialog v-model:visible="showAbout" modal header="About" class="dialog-box">
-      Something in the dialog how wide will this dialog get if I just keep typing
-      will it continue to expand indefinitely or will it wrapp at some point idk
+      <AboutSection />
     </Dialog>
   </div>
 </template>
@@ -20,6 +19,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Button from 'primevue/button';
+import AboutSection from './components/AboutSection.vue'
+import MainController from './components/MainController.vue';
 
 const showAbout = ref(false);
 </script>
