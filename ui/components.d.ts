@@ -10,6 +10,7 @@ declare module 'vue' {
     AboutSection: typeof import('./src/components/AboutSection.vue')['default']
     Controller: typeof import('./src/components/Controller.vue')['default']
     Dialog: typeof import('primevue/dialog')['default']
+    InputText: typeof import('primevue/inputtext')['default']
     MainController: typeof import('./src/components/MainController.vue')['default']
     StartScreen: typeof import('./src/components/StartScreen.vue')['default']
     WelcomeScreen: typeof import('./src/components/WelcomeScreen.vue')['default']

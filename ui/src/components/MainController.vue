@@ -2,18 +2,21 @@
   <div class="controller-box">
     <WelcomeScreen
       v-if="showScreen(ControllerValue.WELCOME_SCREEN)"
-      @start-session="startSession"
-      @join-session="joinSession"
+      @start-session="screenController = ControllerValue.START_SCREEN"
+      @join-session="screenController = ControllerValue.JOIN_SCREEN"
     />
     <StartScreen
       v-if="showScreen(ControllerValue.START_SCREEN)"
+      @back="screenController = ControllerValue.WELCOME_SCREEN"
+      @submit="createSession"
     />
   </div>
 </template>
   
 <script setup lang="ts">
 import { ref, Ref } from 'vue';
-import { ControllerValue } from '../constants'
+import { postNewSession } from '../apiConnect';
+import { ControllerValue, nameStorageKey } from '../constants'
 
 import StartScreen from './StartScreen.vue';
 import WelcomeScreen from './WelcomeScreen.vue';
@@ -22,12 +25,11 @@ const screenController : Ref<ControllerValue> = ref(ControllerValue.WELCOME_SCRE
 
 const showScreen = (value : ControllerValue) => screenController.value === value;
 
-function startSession() {
-  screenController.value = ControllerValue.START_SCREEN;
-}
-
-function joinSession() {
-  console.log('join session');
+async function createSession(roomLabels: string[]) {
+  const response = await postNewSession(
+    localStorage.getItem(nameStorageKey) ?? '',
+    roomLabels
+  );
 }
 </script>
 

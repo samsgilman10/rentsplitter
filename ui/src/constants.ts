@@ -5,3 +5,5 @@ export enum ControllerValue {
   CHOICE_SCREEN = 'CHOICE_SCREEN',
   END_SCREEN = 'END_SCREEN',
 }
+
+export const nameStorageKey = 'user-name';
