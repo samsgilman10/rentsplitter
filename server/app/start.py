@@ -13,6 +13,9 @@ CORS(app, origins=[FRONTEND_URL])
 pool = redis.ConnectionPool(host=REDIS_HOST, port=REDIS_PORT, db=0)
 r = redis.Redis(connection_pool=pool)
 
+@app.route("/new-session/", methods = ['POST'])
+def new_session():
+    return({'foo': 'bar'})
 
 @app.route("/")
 def hello_world():
@@ -21,5 +24,4 @@ def hello_world():
     else:
         value = r.set('key', 0)
     r.incr('key')
-    response = jsonify({'value': int(value)})
-    return response
+    return({'value': int(value)})
