@@ -26,7 +26,7 @@ const screenController : Ref<ControllerValue> = ref(ControllerValue.WELCOME_SCRE
 const showScreen = (value : ControllerValue) => screenController.value === value;
 
 async function createSession(roomLabels: string[]) {
-  const response = await postNewSession(
+  await postNewSession(
     sessionStorage.getItem(nameStorageKey) ?? '',
     roomLabels
   );
